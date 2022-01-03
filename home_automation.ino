@@ -3,7 +3,7 @@
 #include "ESPAsyncWebServer.h"
 
 // Set to true to define Relay as Normally Open (NO)
-#define RELAY_NO    true
+#define RELAY_NO  false
 
 // Set number of relays
 #define NUM_RELAYS  1
@@ -93,9 +93,11 @@ void setup(){
   for(int i=1; i<=NUM_RELAYS; i++){
     pinMode(relayGPIOs[i-1], OUTPUT);
     if(RELAY_NO){
+      Serial.println("I'm turned ON");
       digitalWrite(relayGPIOs[i-1], HIGH);
     }
     else{
+      Serial.println("I'm turned OFF");
       digitalWrite(relayGPIOs[i-1], LOW);
     }
   }
